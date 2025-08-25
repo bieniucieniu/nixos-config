@@ -1,6 +1,5 @@
 {
   description = "Example nix-darwin system flake";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
@@ -20,6 +19,8 @@
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           environment.systemPackages = [
+            pkgs.cocoapods
+            pkgs.bottom
             pkgs.vim
             pkgs.bash
             pkgs.devenv
@@ -27,9 +28,9 @@
             pkgs.fnm
             pkgs.gh
             pkgs.go
+            pkgs.ghostty
             pkgs.lazygit
             pkgs.neovim
-            pkgs.qbittorrent
             pkgs.ripgrep
             pkgs.tmux
             pkgs.zoxide
@@ -43,7 +44,6 @@
           # Enable alternative shell support in nix-darwin.
           programs.fish.enable = true;
           users.users.mikolajbien.shell = pkgs.fish;
-
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
