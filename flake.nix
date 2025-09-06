@@ -28,7 +28,6 @@
             pkgs.fnm
             pkgs.gh
             pkgs.go
-            pkgs.ghostty
             pkgs.lazygit
             pkgs.neovim
             pkgs.ripgrep
