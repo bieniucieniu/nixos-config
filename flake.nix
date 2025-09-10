@@ -107,7 +107,6 @@
           programs.fish.enable = true;
           users.users.mikolajbien = {
             isNormalUser = true;
-            shell = pkgs.fish;
             description = "mikolajbien";
             extraGroups = [
               "networkmanager"
