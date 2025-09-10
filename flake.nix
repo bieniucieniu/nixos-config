@@ -135,7 +135,7 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hardware-configuration.nix
+          ./hardware/thinkpad-configuration.nix
           sharedConfiguration
           nixosConfiguration
         ];
