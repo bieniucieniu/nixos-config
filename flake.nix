@@ -124,6 +124,9 @@
               kdePackages.kate
             ];
           };
+          environment.systemPackages = [
+            pkgs.google-chrome
+          ];
 
           system.stateVersion = "23.11"; # Or update to "25.05" if you truly mean that channel
         };
