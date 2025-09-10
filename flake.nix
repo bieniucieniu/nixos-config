@@ -17,8 +17,8 @@
         { pkgs, ... }:
         {
           environment.systemPackages = [
+            pkgs.git
             pkgs.bottom
-            pkgs.vim
             pkgs.bash
             pkgs.fzf
             pkgs.lazygit
@@ -125,6 +125,7 @@
             ];
           };
           environment.systemPackages = [
+            pkgs.git
             pkgs.google-chrome
           ];
 
