@@ -20,10 +20,7 @@
             pkgs.bottom
             pkgs.vim
             pkgs.bash
-            pkgs.devenv
             pkgs.fzf
-            pkgs.fnm
-            pkgs.gh
             pkgs.lazygit
             pkgs.neovim
             pkgs.ripgrep
@@ -37,12 +34,21 @@
           programs.fish.enable = true;
           users.users.mikolajbien.shell = pkgs.fish;
         };
+      devConfiguration =
+        { pkgs, ... }:
+        {
+          environment.systemPackages = [
+            pkgs.devenv
+            pkgs.fnm
+            pkgs.gh
+            pkgs.go
+          ];
+        };
       macConfiguration =
         { pkgs, ... }:
         {
           environment.systemPackages = [
             pkgs.cocoapods
-            pkgs.go
           ];
           system.configurationRevision = self.rev or self.dirtyRev or null;
           system.stateVersion = 6;
@@ -119,16 +125,6 @@
             ];
           };
 
-          environment.systemPackages = with pkgs; [
-            neovim
-            git
-            curl
-            qbittorrent
-            mpv
-            google-chrome
-            ghostty
-          ];
-
           system.stateVersion = "23.11"; # Or update to "25.05" if you truly mean that channel
         };
     in
@@ -145,6 +141,7 @@
       darwinConfigurations."Mikolajs-Mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # As specified in your mac config
         modules = [
+          devConfiguration
           sharedConfiguration
           macConfiguration
         ];
