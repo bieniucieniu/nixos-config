@@ -4,6 +4,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -11,6 +13,7 @@
       self,
       nix-darwin,
       nixpkgs,
+      home-manager,
     }:
     let
       sharedConfiguration =
@@ -129,7 +132,7 @@
             pkgs.google-chrome
           ];
 
-          system.stateVersion = "23.11"; # Or update to "25.05" if you truly mean that channel
+          system.stateVersion = "25.05"; # Or update to "25.05" if you truly mean that channel
         };
     in
     {
@@ -145,6 +148,7 @@
       darwinConfigurations."Mikolajs-Mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # As specified in your mac config
         modules = [
+          home-manager.darwinModules.home-manager
           devConfiguration
           sharedConfiguration
           macConfiguration
