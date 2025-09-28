@@ -125,6 +125,10 @@
             ];
           };
           environment.systemPackages = [
+            pkgs.nemo
+            pkgs.mpv
+            pkgs.qbittorrent
+            pkgs.ghostty
             pkgs.git
             pkgs.google-chrome
           ];
