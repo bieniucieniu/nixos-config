@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = [
+    pkgs.neofetch
     pkgs.git
     pkgs.bottom
     pkgs.bash
