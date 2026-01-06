@@ -46,6 +46,20 @@
         ];
       };
 
+      homeConfigurations."mikolajbien" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
+        modules = [
+          ./configurations/home-manager-fish.nix
+          {
+            home.username = "mikolajbien";
+            home.homeDirectory = "/Users/mikolajbien";
+          }
+        ];
+      };
+
       # Global Nix configuration settings, apply to both systems
       nixConfig = {
         experimental-features = [
