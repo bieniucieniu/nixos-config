@@ -7,5 +7,6 @@
     pkgs.go
     pkgs.bun
     pkgs.biome
+    pkgs.opencode
   ];
 }
