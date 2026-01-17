@@ -12,7 +12,7 @@
     pkgs.tmux
     pkgs.zoxide
     pkgs.zig
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.mpv
   ];
 
