@@ -2,6 +2,7 @@
 {
   environment.systemPackages = [
     pkgs.devenv
+    pkgs.direnv
     pkgs.fnm
     pkgs.gh
     pkgs.go
