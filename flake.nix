@@ -4,6 +4,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -14,6 +16,7 @@
       nix-darwin,
       nixpkgs,
       home-manager,
+      nixos-wsl,
     }:
     let
       sharedConfiguration = ./configurations/shared.nix;
@@ -31,6 +34,7 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+	  nixos-wsl.nixosModules.default
           ./hardware/thinkpad-configuration.nix
           sharedConfiguration
           nixosConfiguration
@@ -39,7 +43,7 @@
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./wsl/thinkpad-configuration.nix
+          ./hardware/wsl-configuration.nix
 	  wslConfiguration
         ];
       };
