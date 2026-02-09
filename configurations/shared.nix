@@ -13,7 +13,6 @@
     pkgs.zoxide
     pkgs.zig
     pkgs.nixfmt
-    pkgs.mpv
   ];
 
   nix.settings.experimental-features = "nix-command flakes";

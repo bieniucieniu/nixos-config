@@ -34,7 +34,6 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	  nixos-wsl.nixosModules.default
           ./hardware/thinkpad-configuration.nix
           sharedConfiguration
           nixosConfiguration
@@ -43,8 +42,10 @@
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+	  nixos-wsl.nixosModules.default
           ./hardware/wsl-configuration.nix
 	  wslConfiguration
+          sharedConfiguration
         ];
       };
 
