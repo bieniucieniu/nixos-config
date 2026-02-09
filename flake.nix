@@ -25,6 +25,7 @@
           inherit self pkgs;
         };
       nixosConfiguration = ./configurations/nixos.nix;
+      wslConfiguration = ./configurations/wsl.nix;
     in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -35,6 +36,14 @@
           nixosConfiguration
         ];
       };
+      nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./wsl/thinkpad-configuration.nix
+	  wslConfiguration
+        ];
+      };
+
 
       darwinConfigurations."Mikolajs-Mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # As specified in your mac config
@@ -46,19 +55,7 @@
         ];
       };
 
-      homeConfigurations."mikolajbien" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config.allowUnfree = true;
-        };
-        modules = [
-          ./configurations/home-manager-fish.nix
-          {
-            home.username = "mikolajbien";
-            home.homeDirectory = "/Users/mikolajbien";
-          }
-        ];
-      };
+      
 
       # Global Nix configuration settings, apply to both systems
       nixConfig = {
