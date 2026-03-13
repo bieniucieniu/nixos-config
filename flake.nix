@@ -4,8 +4,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    # nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -16,7 +16,7 @@
       nix-darwin,
       nixpkgs,
       home-manager,
-      nixos-wsl,
+      # nixos-wsl,
     }:
     let
       sharedConfiguration = ./configurations/shared.nix;
@@ -28,7 +28,7 @@
           inherit self pkgs;
         };
       nixosConfiguration = ./configurations/nixos.nix;
-      wslConfiguration = ./configurations/wsl.nix;
+      # wslConfiguration = ./configurations/wsl.nix;
     in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -42,13 +42,12 @@
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	  nixos-wsl.nixosModules.default
-          ./hardware/wsl-configuration.nix
-	  wslConfiguration
+          # nixos-wsl.nixosModules.default
+          #        ./hardware/wsl-configuration.nix
+          # wslConfiguration
           sharedConfiguration
         ];
       };
-
 
       darwinConfigurations."Mikolajs-Mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # As specified in your mac config
@@ -59,8 +58,6 @@
           macConfiguration
         ];
       };
-
-      
 
       # Global Nix configuration settings, apply to both systems
       nixConfig = {
