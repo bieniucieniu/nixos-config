@@ -39,15 +39,6 @@
           nixosConfiguration
         ];
       };
-      nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          # nixos-wsl.nixosModules.default
-          #        ./hardware/wsl-configuration.nix
-          # wslConfiguration
-          sharedConfiguration
-        ];
-      };
 
       darwinConfigurations."Mikolajs-Mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # As specified in your mac config
