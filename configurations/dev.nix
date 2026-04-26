@@ -3,7 +3,7 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = [
     pkgs.devenv
-    pkgs.direnv
+    # pkgs.direnv
     pkgs.fnm
     pkgs.gh
     pkgs.go
