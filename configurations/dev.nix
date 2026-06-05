@@ -12,7 +12,9 @@
     # pkgs.gemini-cli
     pkgs.tree-sitter
     pkgs.nil
-    pkgs.k9s
     pkgs.openapi-generator-cli
+    pkgs.sqlc
+    pkgs.kubectl
+    pkgs.fluxcd
   ];
 }
