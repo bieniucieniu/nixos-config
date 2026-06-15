@@ -1,5 +1,9 @@
 { pkgs, self, ... }:
 {
+  nix.settings.trusted-users = [
+    "root"
+    "mikolajbien"
+  ];
   environment.systemPackages = [
     pkgs.cocoapods
     pkgs.mpv
