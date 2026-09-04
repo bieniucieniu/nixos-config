@@ -68,12 +68,12 @@
     ];
   };
   environment.systemPackages = [
-    pkgs.nemo
     pkgs.mpv
     pkgs.qbittorrent
     pkgs.ghostty
     pkgs.git
     pkgs.google-chrome
+    pkgs.unzip
   ];
 
   system.stateVersion = "25.05"; # Or update to "25.05" if you truly mean that channel
