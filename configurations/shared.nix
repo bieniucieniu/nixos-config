@@ -14,7 +14,7 @@
     pkgs.nixfmt
   ];
 
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.fish.enable = true;
   users.users.mikolajbien.shell = pkgs.fish;
 }
