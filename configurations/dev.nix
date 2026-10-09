@@ -16,6 +16,6 @@
     pkgs.sqlc
     pkgs.kubectl
     pkgs.fluxcd
-    pkgs.pnpm
+    pkgs.k9s
   ];
 }
